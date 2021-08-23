@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter currency</title>
+    <style>
+        .alert {
+            color: red;
+            font-size: 150%;
+        }
+    </style>
+</head>
+<body>
+<h1>Shows the exchange rate of the selected currencies for the selected period</h1>
+<div>
+    <p>
+        <span class="alert">
+            {{ .Alert}}
+        </span>
+    </p>
+</div>
+
+<form action="/showcurrencyperiod/" method="POST">
+    <h2> Enter the currency symbols you are interested in (separated by commas)</h2>
+    <h4> Attention, you can choose from the following currencies: JPY,CHF,EUR,GBP,RUB</h4>
+    <h4> base currency USD </h4>
+    <input type="text" name="currency" required pattern="[a-zA-Z,\s]+" placeholder="fill out this field"/><br><br>
+    <h2> <label> Data beginning of the period </label> </h2>
+    <input type="date" name="daystart" min="2010-01-01" max="2030-12-31" required/>
+    &nbsp;&nbsp;&nbsp;
+    <h2> <label> Data end of the period </label> </h2>
+    <input type="date" name="dayend" min="2010-01-01" max="2030-12-31" required/>
+    <br><br>
+    <input type="submit" value="Send"/>
+</form>
+<br><br><br><br><br>
+
+<h3><a href="/">Back</a></h3>
+
+</body>
+</html>

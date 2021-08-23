@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter currency</title>
+    <style>
+        .alert {
+            color: red;
+            font-size: 150%;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <p>
+        <span class="alert">
+            {{ .Alert}}
+        </span>
+    </p>
+</div>
+<h1> Shows the exchange rate of the selected currencies for the selected day </h1>
+<form action="/showcurrencyday/" method="POST">
+    <h2> Enter the currency symbols you are interested in </h2>
+    <h2> (separated by commas)</h2>
+    <input type="text" style="width: 300px;" name="currency" required pattern="[a-zA-Z,\s]+" placeholder="fill out this field, for example: EUR, GBP, JPY, etc."/>
+    <br><br>
+    <h2><label>Data</label></h2>
+    <input type="date" name="day" min="2010-01-01" max="2030-12-31" required/>
+    <input type="submit" value="Send"/>
+</form>
+<br><br><br><br><br>
+
+<h3><a href="/">Back</a></h3>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show of currencies for the selected day</title>
+</head>
+<body>
+{{ range .Currency}}
+<li>
+    <b>{{ . }}</b>
+</li>
+{{end}}
+
+<br><br><br><br><br>
+
+<h3><a href="/inputday/">Back</a></h3>
+
+</body>
+</html>
