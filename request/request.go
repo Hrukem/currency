@@ -40,13 +40,13 @@ func Request(date string, currencies string, typeRequest string) ([]string, erro
 	err = json.NewDecoder(resp.Body).Decode(&result)
 	errorhandler.CheckError(err)
 
-	answer := parseRequest(result)
+	answer := ParseRequest(result)
 
 	return answer, nil
 }
 
-// parseRequest function convert map from answer request into slice of string
-func parseRequest(answer map[string]interface{}) []string {
+// ParseRequest function convert map from answer request into slice of string
+func ParseRequest(answer map[string]interface{}) []string {
 	curr := answer["quotes"]
 	currMap := curr.(map[string]interface{})
 
