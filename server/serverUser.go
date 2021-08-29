@@ -2,14 +2,16 @@
 package serveruser
 
 import (
+	"currency/config"
 	"currency/handlers"
 	"log"
 	"net/http"
-	"os"
 )
 
 // Server function launch server on specified port
 func Server() {
+	port := config.Cfg.Port
+
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", handlers.Home)
 	mux.HandleFunc("/inputday/", handlers.InputDay)
@@ -17,7 +19,6 @@ func Server() {
 	mux.HandleFunc("/inputperiod/", handlers.InputPeriod)
 	mux.HandleFunc("/showcurrencyperiod/", handlers.ShowCurrencyPeriod)
 
-	port := os.Getenv("PORT")
 	log.Println("запуск сервера на " + port)
 	err := http.ListenAndServe(port, mux)
 	log.Fatal(err)

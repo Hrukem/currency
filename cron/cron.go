@@ -14,7 +14,7 @@ import (
 // UserJob function start the task
 func UserJob() {
 	c := cron.New()
-//	_, err := c.AddFunc("1 12 * * *", func() {insertDatabase()})
+	//	_, err := c.AddFunc("1 12 * * *", func() {insertDatabase()})
 	_, err := c.AddFunc("*/1 * * * *", func() { insertDatabase() })
 	errorhandler.CheckError(err)
 	fmt.Println("Cron start!")
@@ -27,12 +27,11 @@ func insertDatabase() {
 		time.Now().Format("2006-1-2"),
 		"JPY,CHF,EUR,GBP,RUB",
 		"/live",
-		)
+	)
 	errorhandler.CheckError(err)
 
 	data := map[string][]string{"Currency": answer}
 	for _, v := range data["Currency"] {
 		database.Insert(v, time.Now())
 	}
-	fmt.Println("Cron job!", time.Now())
 }

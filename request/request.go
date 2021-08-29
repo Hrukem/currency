@@ -2,13 +2,13 @@
 package request
 
 import (
+	"currency/config"
 	"currency/database"
 	"currency/errorhandler"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"strconv"
 	"time"
 )
@@ -16,10 +16,13 @@ import (
 // Request function send request to website www.currencylayer.com
 // and return result in the form of slice of strings
 func Request(date string, currencies string, typeRequest string) ([]string, error) {
+	website := config.Cfg.Website
+	apiKey := config.Cfg.ApiKey
+
 	resp, err := http.Get(
-		os.Getenv("WEBSITE") +
-			 typeRequest +
-			"?access_key=" + os.Getenv("API_KEY") +
+		website +
+			typeRequest +
+			"?access_key=" + apiKey +
 			"&date=" + date +
 			"&currencies=" + currencies,
 	)
